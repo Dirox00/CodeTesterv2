@@ -19,4 +19,4 @@ do
     fi
 done
 
-echo "All test passed" > result
+echo "All tests passed" > result
