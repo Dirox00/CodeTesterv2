@@ -2,12 +2,13 @@
 
 attempt_file=$1
 correct_file=$2
+generator_file=$3
 
 for (( i=0; i<10; i++ ))
 do
     echo Running test $i
     echo ---------------
-    ./generator.py > test
+    ./$generator_file > test
     attemp=$(./$attempt_file < test)
     true=$(./$correct_file < test)
     if [[ $attemp != $true ]]
