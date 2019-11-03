@@ -2,13 +2,14 @@ from tkinter import *
 
 import os
 
+#TODO: add points functionality
 
-username = 'Pedro Rodríguez Díaz'
+username = 'Tu Madre en Calzones'
 
 def check(n):
-    probs = {1: result1}
+    probs = {1: result1} #For accessing and changing just the label of that problem
     probs[1].set(f'Running test {n}')
-    os.system('./test.sh try.py correct.py')
+    os.system('./test.sh try.py correct.py') #TODO: change paths and names of try.py and correct.py
     with open('result', 'r') as f:
         result = f.read()
 
