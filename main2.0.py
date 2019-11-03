@@ -1,17 +1,25 @@
 from tkinter import *
 
+import os
+
+
 username = 'Pedro Rodríguez Díaz'
 
-def print_result(n):
+def check(n):
     probs = {1: result1}
-    probs[1].set('Hi')
+    probs[1].set(f'Running test {n}')
+    os.system('./test.sh try.py correct.py')
+    with open('result', 'r') as f:
+        result = f.read()
+
+    probs[1].set(result)
 
 window = Tk()
 window.geometry('1000x500')
 
 #-------------------------------HEADER-------------------------------------
 
-header = LabelFrame(window, height=80, bd=5)
+header = LabelFrame(window, height=80, bd=0)#bd=5
 header.pack(fill=X, side=TOP)
 
 appName = Label(header, text='CodeTester', font=('Consolas', 40))
@@ -30,18 +38,18 @@ points.set('0')
 
 #-------------------------------PROBLEMS-------------------------------------
 
-problems = LabelFrame(window, height=900, bd=5)
+problems = LabelFrame(window, height=900, bd=0)
 problems.pack(fill=BOTH, side=TOP)
 
-problem1 = LabelFrame(problems, text='Problem 1', font=('Consolas', 15),height=90, bd=5)
+problem1 = LabelFrame(problems, text='Problem 1', font=('Consolas', 15),height=90, bd=0)#bd=5
 problem1.pack(fill=X, side=TOP, padx=20, pady=10)
 
-p1Button = Button(problem1, text='Submit', command=lambda: print_result(1), width=15, font='Consolas', relief=RAISED)
+p1Button = Button(problem1, text='Submit', command=lambda: check(1), width=15, font='Consolas', relief=RAISED)
 p1Button.pack(side=LEFT, padx=10, pady=10)
 
 result1 = StringVar()
+result1.set('Tests results')
 result1Label =  Label(problem1, textvariable=result1, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
 result1Label.pack(side=LEFT, padx=30)
-result1.set('Tests results')
 
 window.mainloop()
