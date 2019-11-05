@@ -1,0 +1,4 @@
+
+
+{"1": {"solución": "print_same.py", "generador": "rand_char.py"},
+"2": {"solución": "times_two.py", "generador": "rand_number.py"}}
