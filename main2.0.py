@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from tkinter import *
 
 import os
@@ -14,7 +16,7 @@ data = json.loads(file)
 def check(n):
     probs = {1: result1}
     probs[1].set(f'Running test {n}')
-    os.system('./test.sh try.py correct.py')
+    os.system('./test.sh try.py correct.py generator.py')
     with open('result', 'r') as f:
         result = f.read().replace('\n', '')
 
