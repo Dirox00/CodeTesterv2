@@ -2,4 +2,4 @@
 
 import random
 
-print(random.random()*10**random.randint(1,10))
+print(random.random()*(10**random.randint(1,10)))

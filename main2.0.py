@@ -18,16 +18,18 @@ with open('problems.json', 'r') as f:
 problems_dict = json.loads(file)
 
 def check(n):
+    my_file = input()
     actual_problem = problems_dict[str(n)]
     probs = {1: result1, 2: result2}
     probs[n].set(f'Running test {n}')
-    os.system(f'./test.sh try.py {actual_problem["solucion"]} {actual_problem["generador"]}')
+    os.system(f'./test.sh {my_file} {actual_problem["solucion"]} {actual_problem["generador"]}')
     with open('result', 'r') as f:
         result = f.read().replace('\n', '')
 
     if result == 'All tests passed' and data[str(n)] != 'All tests passed':
         data['points'] += 10
         data[str(n)] = 'All tests passed'
+        probsd[n].set('All tests passed')
         points.set(data['points'])
     else:
         data[str(n)] = result
@@ -77,7 +79,6 @@ problem2.pack(fill=X, side=TOP, padx=20, pady=10)
 
 p2Button = Button(problem2, text='Submit', command=lambda: check(2), width=15, font='Consolas', relief=RAISED)
 p2Button.pack(side=LEFT, padx=10, pady=10)
-
 
 result1 = StringVar()
 result1.set('Test results')
