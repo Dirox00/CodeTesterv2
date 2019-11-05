@@ -13,10 +13,15 @@ with open('data.json', 'r') as f:
     file = f.read()
 data = json.loads(file)
 
+with open('problems.json', 'r') as f:
+    file = f.read()
+problems_dict = json.loads(file)
+
 def check(n):
-    probs = {1: result1}
-    probs[1].set(f'Running test {n}')
-    os.system('./test.sh try.py correct.py generator.py')
+    actual_problem = problems_dict[str(n)]
+    probs = {1: result1, 2: result2}
+    probs[n].set(f'Running test {n}')
+    os.system(f'./test.sh try.py {actual_problem["solucion"]} {actual_problem["generador"]}')
     with open('result', 'r') as f:
         result = f.read().replace('\n', '')
 
@@ -65,9 +70,23 @@ problem1.pack(fill=X, side=TOP, padx=20, pady=10)
 p1Button = Button(problem1, text='Submit', command=lambda: check(1), width=15, font='Consolas', relief=RAISED)
 p1Button.pack(side=LEFT, padx=10, pady=10)
 
+#...........................Problem2................................................ 
+
+problem2 = LabelFrame(problems, text='Problem 2', font=('Consolas', 15),height=90, bd=0)#bd=5
+problem2.pack(fill=X, side=TOP, padx=20, pady=10)
+
+p2Button = Button(problem2, text='Submit', command=lambda: check(2), width=15, font='Consolas', relief=RAISED)
+p2Button.pack(side=LEFT, padx=10, pady=10)
+
+
 result1 = StringVar()
-result1.set(data['1'])
+result1.set('Test results')
 result1Label =  Label(problem1, textvariable=result1, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
 result1Label.pack(side=LEFT, padx=30)
+
+result2 = StringVar()
+result2.set('Test results')
+result2Label =  Label(problem2, textvariable=result2, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
+result2Label.pack(side=LEFT, padx=30)
 
 window.mainloop()
