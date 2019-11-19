@@ -18,7 +18,7 @@ problems_dict = json.loads(file)
 class NewProblem:
     def __init__(self, num):
         self.num = num
-        self.result = StringVar()
+        self.message = StringVar()
 
         problem = LabelFrame(problems, text=f'Problem {self.num}', font=('Consolas', 15),height=90, bd=0)
         problem.pack(fill=X, side=TOP, padx=20, pady=10)
@@ -26,15 +26,15 @@ class NewProblem:
         button = Button(problem, text='Submit', command=check, width=15, font='Consolas', relief=RAISED)
         button.pack(side=LEFT, padx=10, pady=10)
 
-        resultLabel =  Label(problem, textvariable=self.result, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
+        resultLabel =  Label(problem, textvariable=self.message, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
         resultLabel.pack(side=LEFT, padx=30)
-        self.result.set('Tests results')
+        self.message.set('Tests results')
     
     def check(self):
         my_file = input()
         actual_problem = problems_dict[str(self.num)]
         probs = {1: result1, 2: result2}
-        self.result.set(f'Running test {self.num}')
+        self.message.set(f'Running test {self.num}')
         os.system(f'./test.sh {my_file} {actual_problem["solucion"]} {actual_problem["generador"]}')
         with open('result', 'r') as f:
             result = f.read().replace('\self.num', '')
@@ -42,11 +42,11 @@ class NewProblem:
         if result == 'All tests passed' and data[str(self.num)] != 'All tests passed':
             data['points'] += 10
             data[str(self.num)] = 'All tests passed'
-            self.result.set('All tests passed')
+            self.message.set('All tests passed')
             points.set(data['points'])
         else:
             data[str(self.num)] = result
-            self.result.set(result)
+            self.message.set(result)
         
         with open('data.json', 'w') as f:
             json.dump(data, f)
