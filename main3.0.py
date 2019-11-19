@@ -20,6 +20,7 @@ class NewProblem:
         self.result.set('hi')
         
 
+
 window = Tk()
 window.geometry('1000x500')
 
