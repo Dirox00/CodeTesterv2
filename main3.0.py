@@ -23,7 +23,7 @@ class NewProblem:
         problem = LabelFrame(problems, text=f'Problem {self.num}', font=('Consolas', 15),height=90, bd=0)
         problem.pack(fill=X, side=TOP, padx=20, pady=10)
 
-        button = Button(problem, text='Submit', command=check, width=15, font='Consolas', relief=RAISED)
+        button = Button(problem, text='Submit', command=self.check, width=15, font='Consolas', relief=RAISED)
         button.pack(side=LEFT, padx=10, pady=10)
 
         resultLabel =  Label(problem, textvariable=self.message, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
