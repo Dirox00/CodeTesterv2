@@ -24,5 +24,5 @@ problems.pack(fill=BOTH, side=TOP)
 
 for i in range(5):
     NewProblem(i)
-
+ 
 window.mainloop() 
