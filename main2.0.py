@@ -29,7 +29,7 @@ def check(n):
     if result == 'All tests passed' and data[str(n)] != 'All tests passed':
         data['points'] += 10
         data[str(n)] = 'All tests passed'
-        probsd[n].set('All tests passed')
+        probs[n].set('All tests passed')
         points.set(data['points'])
     else:
         data[str(n)] = result

@@ -33,11 +33,10 @@ class NewProblem:
     def check(self):
         my_file = input()
         actual_problem = problems_dict[str(self.num)]
-        probs = {1: result1, 2: result2}
         self.message.set(f'Running test {self.num}')
         os.system(f'./test.sh {my_file} {actual_problem["solucion"]} {actual_problem["generador"]}')
         with open('result', 'r') as f:
-            result = f.read().replace('\self.num', '')
+            result = f.read().replace('\n', '')
 
         if result == 'All tests passed' and data[str(self.num)] != 'All tests passed':
             data['points'] += 10
@@ -76,10 +75,10 @@ points.set(data['points'])
 
 #-------------------------------PROBLEMS-------------------------------------
 
-problems = LabelFrame(window, height=900)
+problems = LabelFrame(window, height=900, bd=0)
 problems.pack(fill=BOTH, side=TOP)
 
-for i in range(5):
+for i in range(1, len(problems_dict) + 1):
     NewProblem(i)
 
 window.mainloop()
