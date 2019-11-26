@@ -7,20 +7,18 @@ import os
 import json
 
 
+problems_path = os.getcwd() + '/Problems/' #Dirección de carpeta con problemas
+attempts_path = os.getcwd() + '/Attempts/'
 username = 'Pepe Palotes'
-
-with open('data.json', 'r') as f:
-    file = f.read()
-data = json.loads(file)
-
-with open('problems.json', 'r') as f:
-    file = f.read()
-problems_dict = json.loads(file)
+points_ = 0
 
 class NewProblem:
     def __init__(self, num):
         self.num = num
+        self.state = 'Test results'
         self.message = StringVar()
+        self.solution = problems_path + f'solution_{self.num}.py'
+        self.generator = problems_path + f'generator_{self.num}.py'
 
         problem = LabelFrame(problems, text=f'Problem {self.num}', font=('Consolas', 15),height=90, bd=0)
         problem.pack(fill=X, side=TOP, padx=20, pady=10)
@@ -30,27 +28,25 @@ class NewProblem:
 
         resultLabel =  Label(problem, textvariable=self.message, font=('Consolas', 10), width=100, bg='grey80', height=2, anchor=W, padx=10)
         resultLabel.pack(side=LEFT, padx=30)
-        self.message.set('Tests results')
+        self.message.set(self.state)
     
     def check(self):
-        my_file = input()
-        actual_problem = problems_dict[str(self.num)]
+        global points_
+        self.attempt = attempts_path + f'problema_{self.num}.py'
+
         self.message.set(f'Running test {self.num}')
-        os.system(f'./test.sh {my_file} {actual_problem["solucion"]} {actual_problem["generador"]}')
+        os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
         with open('result', 'r') as f:
             result = f.read().replace('\n', '')
 
-        if result == 'All tests passed' and data[str(self.num)] != 'All tests passed':
-            data['points'] += 10
-            data[str(self.num)] = 'All tests passed'
+        if result == 'All tests passed' and self.state != 'All tests passed':
+            points_ += 10
+            self.state = 'All tests passed'
             self.message.set('All tests passed')
-            points.set(data['points'])
+            points.set(points_)
         else:
-            data[str(self.num)] = result
+            self.state = result
             self.message.set(result)
-        
-        with open('data.json', 'w') as f:
-            json.dump(data, f)
 
 
 window = Tk()
@@ -73,14 +69,14 @@ pointsWord.pack(side=RIGHT, padx=20)
 points = StringVar()
 counter =  Label(header, textvariable=points, font=('Consolas', 40))
 counter.pack(side=RIGHT)
-points.set(data['points'])
+points.set(points_)
 
 #-------------------------------PROBLEMS-------------------------------------
 
 problems = LabelFrame(window, height=900, bd=0)
 problems.pack(fill=BOTH, side=TOP)
 
-for i in range(1, len(problems_dict) + 1):
+for i in range(1, 2 + 1): # Ese 2 debería ser la cantidad de problemas
     NewProblem(i)
 
 window.mainloop()

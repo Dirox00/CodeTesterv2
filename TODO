@@ -1,1 +1,3 @@
-Se necesitan permisos para ejecutar los problemas.
+- Se necesitan permisos para ejecutar los problemas.
+- Que main cuente la cantidad de problemas que hay para iniciarlos 
+  (Ahora está hardcodeado)

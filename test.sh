@@ -8,13 +8,13 @@ for (( i=0; i<10; i++ ))
 do
     echo Running test $i
     echo ---------------
-    ./$generator_file > test
-    attemp=$(./$attempt_file < test)
-    true=$(./$correct_file < test)
+    $generator_file > test
+    attemp=$($attempt_file < test)
+    true=$($correct_file < test)
     if [[ $attemp != $true ]]
     then
-        ./$attempt_file < test > attempt
-        ./$correct_file < test > correct
+        $attempt_file < test > attempt
+        $correct_file < test > correct
         echo "Test $i has failed" > result
         exit
     fi
