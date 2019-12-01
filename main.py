@@ -1,24 +1,23 @@
 #!/usr/bin/python3
 
 from tkinter import *
-
 import os
-
 import json
 
-
-problems_path = os.getcwd() + '/Problems/' #Dirección de carpeta con problemas
-attempts_path = os.getcwd() + '/Attempts/'
+CURRENT_DIR = os.getcwd()
+problems_path = CURRENT_DIR + '/Problems/' #Dirección de carpeta con problemas
+attempts_path = CURRENT_DIR + '/Attempts/'
+generators_path = CURRENT_DIR + '/Generators/'
 username = 'Pepe Palotes'
 points_ = 0
 
-class NewProblem:
+class NewProblem():
     def __init__(self, num):
         self.num = num
         self.state = 'Test results'
         self.message = StringVar()
         self.solution = problems_path + f'solution_{self.num}.py'
-        self.generator = problems_path + f'generator_{self.num}.py'
+        self.generator = generators_path + f'generator_{self.num}.py'
 
         problem = LabelFrame(problems, text=f'Problem {self.num}', font=('Consolas', 15),height=90, bd=0)
         problem.pack(fill=X, side=TOP, padx=20, pady=10)
