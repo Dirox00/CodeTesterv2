@@ -31,9 +31,10 @@ class NewProblem():
     
     def check(self):
         global points_
+
+        #self.message.set('Running tests') # {self.num}
         self.attempt = attempts_path + f'problema_{self.num}.py'
 
-        self.message.set(f'Running test {self.num}')
         os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
         with open('result', 'r') as f:
             result = f.read().replace('\n', '')
@@ -49,7 +50,7 @@ class NewProblem():
 
 
 window = Tk()
-window.geometry('1000x500')
+window.geometry('700x500')
 
 #-------------------------------HEADER-------------------------------------
 
@@ -72,10 +73,12 @@ points.set(points_)
 
 #-------------------------------PROBLEMS-------------------------------------
 
-problems = LabelFrame(window, height=900, bd=0)
+problems = LabelFrame(window, bd=0)
 problems.pack(fill=BOTH, side=TOP)
 
-for i in range(1, 2 + 1): # Ese 2 debería ser la cantidad de problemas
+n = 2
+
+for i in range(1, n + 1): # n es la cantidad de problemas
     NewProblem(i)
 
 window.mainloop()
