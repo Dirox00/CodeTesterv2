@@ -2,6 +2,8 @@
 
 from tkinter import *
 
+# from PIL import Image, ImageTk # Name Pillow on pip
+
 import os
 
 import json
@@ -81,5 +83,11 @@ n = 2
 
 for i in range(1, n + 1): # n es la cantidad de problemas
     NewProblem(i)
+
+# load = Image.open("image.png").resize((20, 20))
+# render = ImageTk.PhotoImage(load)
+authors = Label(window, text='Made and supported with love by Korven48 and Dirox00', font=('Consolas', 9))#, image=render)
+# authors.image = render
+authors.pack(side=BOTTOM, padx=20)
 
 window.mainloop()
