@@ -1,2 +1,6 @@
 - Que main cuente la cantidad de problemas que hay para iniciarlos 
   (Ahora está hardcodeado)
+
+- Que los usuarios introduzcan su nombre al inicio
+
+- Mandar los puntos de cada jugador a un ordenador central desde el que controlar la clasificación en tiempo real
