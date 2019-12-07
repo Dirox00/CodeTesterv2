@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 
 from tkinter import *
-<<<<<<< HEAD
 
-# from PIL import Image, ImageTk # Name Pillow on pip
+# from PIL import Image, ImageTk # Named Pillow on pip
 
-=======
->>>>>>> 6fc6c73158fe40e11dd191109b234f7ed1280790
 import os
 import json
 
