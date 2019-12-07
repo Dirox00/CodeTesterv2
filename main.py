@@ -5,7 +5,9 @@ from tkinter import *
 # from PIL import Image, ImageTk # Named Pillow on pip
 
 import os
+
 import json
+
 
 CURRENT_DIR = os.getcwd()
 problems_path = CURRENT_DIR + '/Problems/' #Dirección de carpeta con problemas
