@@ -8,13 +8,17 @@ import os
 
 import json
 
+# ----- Parameters -------
+n_problems = 2
+username = 'Pepe Palotes'
+points_ = 0
+#-------------------------
 
 CURRENT_DIR = os.getcwd()
 problems_path = CURRENT_DIR + '/Problems/' #Dirección de carpeta con problemas
 attempts_path = CURRENT_DIR + '/Attempts/'
 generators_path = CURRENT_DIR + '/Generators/'
-username = 'Pepe Palotes'
-points_ = 0
+
 
 os.system('chmod 744 -R .') 
 # Da permisos de ejecucción, lectura y escritura a
@@ -44,14 +48,16 @@ class NewProblem():
     def check(self):
         global points_
 
-        #self.message.set('Running tests') # {self.num}
         self.attempt = attempts_path + f'problema_{self.num}.py'
-        os.system(f'chmod 744 {self.attempt}')
 
+        # Compara el programa del usuario y la solución
         os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
+        
+        # Comprueba el resultado
         with open('result', 'r') as f:
             result = f.read().replace('\n', '')
 
+        # Actualiza la app según el resultado
         if result == 'All tests passed' and self.state != 'All tests passed':
             points_ += self.problems_points[self.num]
             self.state = 'All tests passed'
@@ -82,16 +88,16 @@ pointsWord.pack(side=RIGHT, padx=20)
 points = StringVar()
 counter =  Label(header, textvariable=points, font=('Consolas', 40))
 counter.pack(side=RIGHT)
-points.set(points_)
+points.set(0)
 
 #-------------------------------PROBLEMS-------------------------------------
 
 problems = LabelFrame(window, bd=0)
 problems.pack(fill=BOTH, side=TOP)
 
-n = 2
+#n = 2
 
-for i in range(1, n + 1): # n es la cantidad de problemas
+for i in range(1, n_problems + 1): # n es la cantidad de problemas
     NewProblem(i)
 
 # load = Image.open("image.png").resize((20, 20))
