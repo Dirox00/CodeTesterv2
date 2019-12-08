@@ -21,6 +21,8 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
+    problems_points = {1: 10, 2: 20}
+
     def __init__(self, num):
         self.num = num
         self.state = 'Test results'
@@ -51,7 +53,7 @@ class NewProblem():
             result = f.read().replace('\n', '')
 
         if result == 'All tests passed' and self.state != 'All tests passed':
-            points_ += 10
+            points_ += self.problems_points[self.num]
             self.state = 'All tests passed'
             self.message.set('All tests passed')
             points.set(points_)
