@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-#problema 2
 n = int(input())
 m = int(input())
 

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# problema 5
 import math
 
 n = int(input())

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# problema 4
 n = int(input())
 
 level1 = ' /\ '

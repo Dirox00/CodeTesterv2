@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# problema 6
 inp = input()
 
 count = 0
