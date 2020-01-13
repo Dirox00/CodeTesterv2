@@ -10,7 +10,7 @@ import json
 
 # ----- Parameters -------
 n_problems = 8
-username = 'Pepe Palotes'
+username = ''
 points_ = 0
 #-------------------------
 
@@ -65,7 +65,8 @@ class NewProblem():
                 self.message.set('All tests passed')
                 points.set(points_)
             else:
-                self.state = result
+                if self.state != 'All tests passed':
+                    self.state = result
                 self.message.set(result)
         except Exception as e:
             self.message.set(f'A {repr(e)} error ocurred')
