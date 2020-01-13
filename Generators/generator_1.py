@@ -1,4 +1,7 @@
 #!/usr/bin/python3
-import random
 
-print(chr(random.randint(0, 10) + 97))
+from random import randint
+GB = randint(0, 20)
+MG = randint(1, 10*1024)
+print(MG)
+print(GB)

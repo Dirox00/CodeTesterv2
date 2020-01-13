@@ -9,7 +9,7 @@ import os
 import json
 
 # ----- Parameters -------
-n_problems = 2
+n_problems = 8
 username = 'Pepe Palotes'
 points_ = 0
 #-------------------------
@@ -25,7 +25,7 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
-    problems_points = {1: 10, 2: 20}
+    problems_points = {1: 10, 2: 20, 3:30, 4:40, 5:50}
 
     def __init__(self, num):
         self.num = num
