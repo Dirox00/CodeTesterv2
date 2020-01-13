@@ -25,7 +25,7 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
-    problems_points = {1: 10, 2: 20, 3:30, 4:40, 5:50}
+    problems_points = {1: 10, 12: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70, 8: 80, 9: 90, 10: 100}
 
     def __init__(self, num):
         self.num = num
@@ -48,24 +48,27 @@ class NewProblem():
     def check(self):
         global points_
 
-        self.attempt = attempts_path + f'problema_{self.num}.py'
+        try:
+            self.attempt = attempts_path + f'problema_{self.num}.py'
 
-        # Compara el programa del usuario y la solución
-        os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
-        
-        # Comprueba el resultado
-        with open('result', 'r') as f:
-            result = f.read().replace('\n', '')
+            # Compara el programa del usuario y la solución
+            os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
+            
+            # Comprueba el resultado
+            with open('result', 'r') as f:
+                result = f.read().replace('\n', '')
 
-        # Actualiza la app según el resultado
-        if result == 'All tests passed' and self.state != 'All tests passed':
-            points_ += self.problems_points[self.num]
-            self.state = 'All tests passed'
-            self.message.set('All tests passed')
-            points.set(points_)
-        else:
-            self.state = result
-            self.message.set(result)
+            # Actualiza la app según el resultado
+            if result == 'All tests passed' and self.state != 'All tests passed':
+                points_ += self.problems_points[self.num]
+                self.state = 'All tests passed'
+                self.message.set('All tests passed')
+                points.set(points_)
+            else:
+                self.state = result
+                self.message.set(result)
+        except Exception as e:
+            self.message.set(f'A {repr(e)} error ocurred')
 
 
 window = Tk()
