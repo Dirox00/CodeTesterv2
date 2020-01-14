@@ -25,7 +25,7 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
-    problems_points = {1: 10, 12: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70, 8: 80, 9: 90, 10: 100}
+    problems_points = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70, 8: 80, 9: 90, 10: 100}
 
     def __init__(self, num):
         self.num = num
@@ -70,6 +70,7 @@ class NewProblem():
                 self.message.set(result)
         except Exception as e:
             self.message.set(f'A {repr(e)} error ocurred')
+        command = self.check
 
 
 window = Tk()
@@ -96,8 +97,21 @@ points.set(0)
 
 #-------------------------------PROBLEMS-------------------------------------
 
-problems = LabelFrame(window, bd=0)
-problems.pack(fill=BOTH, side=TOP)
+problems1 = LabelFrame(window, bd=0)
+problems1.pack(fill=BOTH, side=TOP, expand=True)
+
+canvas = Canvas(problems1)
+problems = Frame(canvas, bd=0)
+vbar = Scrollbar(problems1, orient=VERTICAL, command=canvas.yview)
+canvas.configure(yscrollcommand=vbar.set, width=500, height=700)
+
+vbar.pack(side=RIGHT, fill=Y)
+canvas.pack(side=LEFT,expand=True, fill=BOTH)
+canvas.create_window((4,4), window=problems, anchor="nw", tags="frame")
+
+# problems.pack(fill=BOTH, side=TOP)
+problems.bind("<Configure>", lambda event, canvas=canvas: canvas.configure(scrollregion=canvas.bbox("all"))
+)
 
 #n = 2
 
