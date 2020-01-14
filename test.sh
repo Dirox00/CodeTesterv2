@@ -9,15 +9,9 @@ do
     echo Running test $i
     echo ---------------
     $generator_file > test
-    attemp=$($attempt_file < test)
-    true=$($correct_file < test)
-    if [[ $attemp != $true ]]
-    then
-        $attempt_file < test > attempt
-        $correct_file < test > correct
-        echo "Test $i has failed" > result
-        exit
-    fi
+    $attempt_file < test > attempt
+    $correct_file < test > correct
+    diff attempt correct || { echo "Test $i has failed" > result; $attempt_file < test > attempt; $correct_file < test > correct  exit; }
 done
 
 echo "All tests passed" > result
