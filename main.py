@@ -8,6 +8,9 @@ import os
 
 import json
 
+import time
+
+
 # ----- Parameters -------
 n_problems = 8
 username = ''
@@ -47,6 +50,8 @@ class NewProblem():
     
     def check(self):
         global points_
+        # self.message.set('Running tests')
+        # time.sleep(1)
 
         try:
             self.attempt = attempts_path + f'problema_{self.num}.py'
@@ -65,13 +70,11 @@ class NewProblem():
                 self.message.set('All tests passed')
                 points.set(points_)
             else:
-                if self.state != 'All tests passed':
+                if self.state != 'All tests passed': # para que sólo se sumen si estaba mal hecho
                     self.state = result
                 self.message.set(result)
         except Exception as e:
-            self.message.set(f'A {repr(e)} error ocurred')
-        command = self.check
-
+            self.message.set(f'A {repr(e)} error ocurred') # for showing on the app which error occured
 
 window = Tk()
 window.geometry('700x500')
