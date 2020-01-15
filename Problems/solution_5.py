@@ -1,18 +1,8 @@
 #!/usr/bin/python3
+n = int(input())
+m = int(input())
 
-inp = input()
-
-count = 0
-state = True
-
-for i in inp:
-    if i == ')':
-        count -= 1
-    else:
-        count += 1
-    if count < 0:
-        break
-if count == 0:
-    print('Completo')
-else:
-    print('Incompleto')
+cSum = sum([i for i in range(n+1, n+m+1)])
+pSum = sum([i for i in range(n-1, n-m-1, -1)])
+    
+print(cSum, pSum)

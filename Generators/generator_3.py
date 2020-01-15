@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
-from random import randint
-x = randint(1, 20)
-print(x)
+from random import choice
+for _ in range(3):
+    print(choice(['Si', 'No']))

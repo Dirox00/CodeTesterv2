@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
-from random import choice, randint
-sequence = ''
-for i in range(randint(1, 13)):
-    sequence += choice('()')
-print(sequence)
+from random import randint
+n = randint(-30, 30)
+m = randint(1, 7)
+print(n)
+print(m)

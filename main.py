@@ -12,7 +12,7 @@ import time
 
 
 # ----- Parameters -------
-n_problems = 8
+n_problems = 10
 username = ''
 points_ = 0
 #-------------------------
@@ -28,7 +28,7 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
-    problems_points = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70, 8: 80, 9: 90, 10: 100}
+    problems_points = {0: 1, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 8, 8: 12, 9: 18}
 
     def __init__(self, num):
         self.num = num
@@ -118,7 +118,7 @@ problems.bind("<Configure>", lambda event, canvas=canvas: canvas.configure(scrol
 
 #n = 2
 
-for i in range(1, n_problems + 1): # n es la cantidad de problemas
+for i in range(n_problems): # n es la cantidad de problemas
     NewProblem(i)
 
 # load = Image.open("image.png").resize((20, 20))
