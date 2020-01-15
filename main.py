@@ -18,9 +18,9 @@ points_ = 0
 #-------------------------
 
 CURRENT_DIR = os.getcwd()
-problems_path = CURRENT_DIR + '/Problems/' #Dirección de carpeta con problemas
+problems_path = CURRENT_DIR + '/python_logs/temp/' #Dirección de carpeta con problemas
 attempts_path = CURRENT_DIR + '/Attempts/'
-generators_path = CURRENT_DIR + '/Generators/'
+generators_path = CURRENT_DIR + '/python_logs/Generators/'
 
 
 os.system('chmod 744 -R .') 
@@ -28,7 +28,7 @@ os.system('chmod 744 -R .')
 # todos los programas y carpetas contenidos en el directorio local
  
 class NewProblem():
-    problems_points = {0: 1, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 8, 8: 12, 9: 18}
+    problems_points = {0: 1, 1: 2, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 8, 8: 12, 9: 18}
 
     def __init__(self, num):
         self.num = num
@@ -50,14 +50,12 @@ class NewProblem():
     
     def check(self):
         global points_
-        # self.message.set('Running tests')
-        # time.sleep(1)
 
         try:
             self.attempt = attempts_path + f'problema_{self.num}.py'
 
             # Compara el programa del usuario y la solución
-            os.system(f'./test.sh {self.attempt} {self.solution} {self.generator}')
+            os.system(f'./python_logs/test.sh {self.attempt} {self.solution} {self.generator}')
             
             # Comprueba el resultado
             with open('result', 'r') as f:

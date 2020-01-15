@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-inp1 = input()
-inp2 = input()
-inp3 = input()
+#!/usr/bin/python3
+nombre = input()
+lenguaje = input()
 
-if (inp1, inp2, inp3) == ('Si', 'Si', 'Si'):
-    print('¿Quedamos para comer coles?')
-elif (inp1, inp2) == ('Si', 'Si') or inp3 == 'Si':
-    print('Te veo en el instituto.')
+group = (len(nombre) % 2 == 0) + (lenguaje == 'Python3')
+if group == 0:
+    print(f'{nombre} es un completo extraño.')
+elif group == 1:
+    print(f'Con {nombre} se puede programar.')
 else:
-    print('No me mires.')
+    print(f'Mi primo tiene un nuevo amigo, {nombre}.')

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-x = float(input())
-y = float(input())
+x = int(input())
+y = int(input())
 
-print(int((y*1024)/x))
+print(f'Caben {(y*1024) // x} canciones')
