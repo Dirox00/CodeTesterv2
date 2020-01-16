@@ -35,10 +35,10 @@ class NewProblem():
         self.state = 'Test results'
         self.message = StringVar()
 
-        self.solution = problems_path + f'solution_{self.num}.py'
-        self.generator = generators_path + f'generator_{self.num}.py'
+        self.solution = problems_path + 'solution_{}.py'.format(self.num)
+        self.generator = generators_path + 'generator_{}.py'.format(self.num)
 
-        problem = LabelFrame(problems, text=f'Problem {self.num}', font=('Consolas', 15),height=90, bd=0)
+        problem = LabelFrame(problems, text='Problem {}'.format(self.num), font=('Consolas', 15),height=90, bd=0)
         problem.pack(fill=X, side=TOP, padx=20, pady=10)
 
         button = Button(problem, text='Submit', command=self.check, width=15, font='Consolas', relief=RAISED)
@@ -52,10 +52,10 @@ class NewProblem():
         global points_
 
         try:
-            self.attempt = attempts_path + f'problema_{self.num}.py'
+            self.attempt = attempts_path + 'problema_{}.py'.format(self.num)
 
             # Compara el programa del usuario y la solución
-            os.system(f'./python_logs/test.sh {self.attempt} {self.solution} {self.generator}')
+            os.system('./python_logs/test.sh {} {} {}'.format(self.attempt, self.solution, self.generator))
             
             # Comprueba el resultado
             with open('result', 'r') as f:
@@ -72,7 +72,7 @@ class NewProblem():
                     self.state = result
                 self.message.set(result)
         except Exception as e:
-            self.message.set(f'A {repr(e)} error ocurred') # for showing on the app which error occured
+            self.message.set('A {} error ocurred'.format(repr(e))) # for showing on the app which error occured
 
 window = Tk()
 window.geometry('700x500')

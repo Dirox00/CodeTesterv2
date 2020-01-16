@@ -3,4 +3,4 @@
 x = int(input())
 y = int(input())
 
-print(f'Caben {(y*1024) // x} canciones')
+print('Caben {} canciones'.format((y*1024) // x))

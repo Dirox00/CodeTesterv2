@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import math
-
 n = int(input())
 
 if n % 2 == 0:

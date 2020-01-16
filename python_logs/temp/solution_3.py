@@ -5,8 +5,8 @@ lenguaje = input()
 
 group = (len(nombre) % 2 == 0) + (lenguaje == 'Python3')
 if group == 0:
-    print(f'{nombre} es un completo extraño.')
+    print('{} es un completo extraño.'.format(nombre))
 elif group == 1:
-    print(f'Con {nombre} se puede programar.')
+    print('Con {} se puede programar.'.format(nombre))
 else:
-    print(f'Mi primo tiene un nuevo amigo, {nombre}.')
+    print('Mi primo tiene un nuevo amigo, {}.'.format(nombre))

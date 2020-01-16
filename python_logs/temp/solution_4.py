@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 frase = input().lower()
 
-print(f"a: {frase.count('a')}")
-print(f"e: {frase.count('e')}")
-print(f"i: {frase.count('i')}")
-print(f"o: {frase.count('o')}")
-print(f"u: {frase.count('u')}")
+print("a: {}".format(frase.count('a')))
+print("e: {}".format(frase.count('e')))
+print("i: {}".format(frase.count('i')))
+print("o: {}".format(frase.count('o')))
+print("u: {}".format(frase.count('u')))
